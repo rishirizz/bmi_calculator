@@ -19,13 +19,13 @@ class _InputPageState extends State<InputPage> {
             Row(
               children: [
                 Expanded(
-                  child: GenderCard(
-                    iconData: Icons.male_outlined,
+                  child: MyCard(
+                    color: Color(0xff1D1E33),
                   ),
                 ),
                 Expanded(
-                  child: GenderCard(
-                    iconData: Icons.female_outlined,
+                  child: MyCard(
+                    color: Color(0xff1D1E33),
                   ),
                 ),
               ],
@@ -37,26 +37,15 @@ class _InputPageState extends State<InputPage> {
   }
 }
 
-class GenderCard extends StatelessWidget {
-  final IconData? iconData;
-  GenderCard({
-    @required this.iconData,
-    Key? key,
-  }) : super(key: key);
-
+class MyCard extends StatelessWidget {
+  MyCard({@required this.color});
+  final Color? color;
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: 300,
-      child: Card(
-        color: Color(0xff1D1E33),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(10),
-        ),
-        child: Icon(
-          iconData,
-          size: 100,
-        ),
+    return Card(
+      color: color,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(10),
       ),
     );
   }
