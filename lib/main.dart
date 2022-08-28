@@ -1,3 +1,4 @@
+import 'package:bmi_calculator/screens/input_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -10,11 +11,19 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
+      theme: ThemeData.dark().copyWith(
+        //will change only these two properies, other properties would be same as the dark theme.
+        primaryColor: Color(0xff0A0E21),
+        scaffoldBackgroundColor: Color(0xff0A0E21),
       ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
+      home: InputPage(),
+      onGenerateRoute: (RouteSettings settings) {
+        var routes = <String, WidgetBuilder>{
+          '/input': (BuildContext context) => InputPage(),
+        };
+        WidgetBuilder builder = routes[settings.name]!;
+        return MaterialPageRoute(builder: (ctx) => builder(ctx));
+      },
     );
   }
 }
-
